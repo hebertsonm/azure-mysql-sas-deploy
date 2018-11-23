@@ -1,0 +1,2808 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "servers_devopsdb_sas_createMode": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "extensions_enablevmaccess_username": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "extensions_enablevmaccess_password": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "extensions_enablevmaccess_ssh_key": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "extensions_enablevmaccess_reset_ssh": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "extensions_enablevmaccess_remove_user": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "extensions_enablevmaccess_expiration": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "servers_devopsdb_sas_name": {
+            "defaultValue": "devopsdb-sas",
+            "type": "String"
+        },
+        "virtualMachines_database_name": {
+            "defaultValue": "database",
+            "type": "String"
+        },
+        "virtualMachines_webserver_name": {
+            "defaultValue": "webserver",
+            "type": "String"
+        },
+        "virtualNetworks_devops_vnet_name": {
+            "defaultValue": "devops-vnet",
+            "type": "String"
+        },
+        "networkInterfaces_database282_name": {
+            "defaultValue": "database282",
+            "type": "String"
+        },
+        "publicIPAddresses_database_ip_name": {
+            "defaultValue": "database-ip",
+            "type": "String"
+        },
+        "storageAccounts_devopsdiag673_name": {
+            "defaultValue": "devopsdiag673",
+            "type": "String"
+        },
+        "networkInterfaces_webserver366_name": {
+            "defaultValue": "webserver366",
+            "type": "String"
+        },
+        "publicIPAddresses_webserver_ip_name": {
+            "defaultValue": "webserver-ip",
+            "type": "String"
+        },
+        "networkSecurityGroups_database_nsg_name": {
+            "defaultValue": "database-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_webserver_nsg_name": {
+            "defaultValue": "webserver-nsg",
+            "type": "String"
+        },
+        "databases_mysql_name": {
+            "defaultValue": "mysql",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_database_name": {
+            "defaultValue": "shutdown-computevm-database",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_webserver_name": {
+            "defaultValue": "shutdown-computevm-webserver",
+            "type": "String"
+        },
+        "firewallRules_myvm_name": {
+            "defaultValue": "myvm",
+            "type": "String"
+        },
+        "subnets_default_name": {
+            "defaultValue": "default",
+            "type": "String"
+        },
+        "firewallRules_devops_name": {
+            "defaultValue": "devops",
+            "type": "String"
+        },
+        "configurations_sql_mode_name": {
+            "defaultValue": "sql_mode",
+            "type": "String"
+        },
+        "configurations_server_id_name": {
+            "defaultValue": "server_id",
+            "type": "String"
+        },
+        "configurations_time_zone_name": {
+            "defaultValue": "time_zone",
+            "type": "String"
+        },
+        "databases_tickit_staging_name": {
+            "defaultValue": "tickit_staging",
+            "type": "String"
+        },
+        "configurations_flush_time_name": {
+            "defaultValue": "flush_time",
+            "type": "String"
+        },
+        "extensions_enablevmaccess_name": {
+            "defaultValue": "enablevmaccess",
+            "type": "String"
+        },
+        "configurations_init_connect_name": {
+            "defaultValue": "init_connect",
+            "type": "String"
+        },
+        "configurations_tx_isolation_name": {
+            "defaultValue": "tx_isolation",
+            "type": "String"
+        },
+        "configurations_wait_timeout_name": {
+            "defaultValue": "wait_timeout",
+            "type": "String"
+        },
+        "configurations_max_join_size_name": {
+            "defaultValue": "max_join_size",
+            "type": "String"
+        },
+        "databases_information_schema_name": {
+            "defaultValue": "information_schema",
+            "type": "String"
+        },
+        "databases_performance_schema_name": {
+            "defaultValue": "performance_schema",
+            "type": "String"
+        },
+        "securityRules_SSH_name": {
+            "defaultValue": "SSH",
+            "type": "String"
+        },
+        "configurations_slow_query_log_name": {
+            "defaultValue": "slow_query_log",
+            "type": "String"
+        },
+        "securityRules_SSH_name_1": {
+            "defaultValue": "SSH",
+            "type": "String"
+        },
+        "configurations_event_scheduler_name": {
+            "defaultValue": "event_scheduler",
+            "type": "String"
+        },
+        "configurations_long_query_time_name": {
+            "defaultValue": "long_query_time",
+            "type": "String"
+        },
+        "configurations_max_error_count_name": {
+            "defaultValue": "max_error_count",
+            "type": "String"
+        },
+        "configurations_max_sort_length_name": {
+            "defaultValue": "max_sort_length",
+            "type": "String"
+        },
+        "configurations_net_retry_count_name": {
+            "defaultValue": "net_retry_count",
+            "type": "String"
+        },
+        "securityRules_HTTP_name": {
+            "defaultValue": "HTTP",
+            "type": "String"
+        },
+        "configurations_net_read_timeout_name": {
+            "defaultValue": "net_read_timeout",
+            "type": "String"
+        },
+        "configurations_table_open_cache_name": {
+            "defaultValue": "table_open_cache",
+            "type": "String"
+        },
+        "securityRules_HTTPS_name": {
+            "defaultValue": "HTTPS",
+            "type": "String"
+        },
+        "configurations_lock_wait_timeout_name": {
+            "defaultValue": "lock_wait_timeout",
+            "type": "String"
+        },
+        "configurations_net_write_timeout_name": {
+            "defaultValue": "net_write_timeout",
+            "type": "String"
+        },
+        "configurations_slave_net_timeout_name": {
+            "defaultValue": "slave_net_timeout",
+            "type": "String"
+        },
+        "configurations_max_seeks_for_key_name": {
+            "defaultValue": "max_seeks_for_key",
+            "type": "String"
+        },
+        "configurations_innodb_file_format_name": {
+            "defaultValue": "innodb_file_format",
+            "type": "String"
+        },
+        "configurations_innodb_io_capacity_name": {
+            "defaultValue": "innodb_io_capacity",
+            "type": "String"
+        },
+        "configurations_max_allowed_packet_name": {
+            "defaultValue": "max_allowed_packet",
+            "type": "String"
+        },
+        "configurations_max_connect_errors_name": {
+            "defaultValue": "max_connect_errors",
+            "type": "String"
+        },
+        "configurations_innodb_table_locks_name": {
+            "defaultValue": "innodb_table_locks",
+            "type": "String"
+        },
+        "configurations_interactive_timeout_name": {
+            "defaultValue": "interactive_timeout",
+            "type": "String"
+        },
+        "configurations_default_week_format_name": {
+            "defaultValue": "default_week_format",
+            "type": "String"
+        },
+        "configurations_innodb_large_prefix_name": {
+            "defaultValue": "innodb_large_prefix",
+            "type": "String"
+        },
+        "configurations_innodb_stats_method_name": {
+            "defaultValue": "innodb_stats_method",
+            "type": "String"
+        },
+        "configurations_character_set_server_name": {
+            "defaultValue": "character_set_server",
+            "type": "String"
+        },
+        "configurations_group_concat_max_len_name": {
+            "defaultValue": "group_concat_max_len",
+            "type": "String"
+        },
+        "configurations_innodb_max_purge_lag_name": {
+            "defaultValue": "innodb_max_purge_lag",
+            "type": "String"
+        },
+        "configurations_max_user_connections_name": {
+            "defaultValue": "max_user_connections",
+            "type": "String"
+        },
+        "configurations_max_write_lock_count_name": {
+            "defaultValue": "max_write_lock_count",
+            "type": "String"
+        },
+        "configurations_stored_program_cache_name": {
+            "defaultValue": "stored_program_cache",
+            "type": "String"
+        },
+        "configurations_innodb_old_blocks_pct_name": {
+            "defaultValue": "innodb_old_blocks_pct",
+            "type": "String"
+        },
+        "configurations_innodb_lru_scan_depth_name": {
+            "defaultValue": "innodb_lru_scan_depth",
+            "type": "String"
+        },
+        "configurations_optimizer_prune_level_name": {
+            "defaultValue": "optimizer_prune_level",
+            "type": "String"
+        },
+        "configurations_innodb_old_blocks_time_name": {
+            "defaultValue": "innodb_old_blocks_time",
+            "type": "String"
+        },
+        "configurations_innodb_read_io_threads_name": {
+            "defaultValue": "innodb_read_io_threads",
+            "type": "String"
+        },
+        "configurations_lower_case_table_names_name": {
+            "defaultValue": "lower_case_table_names",
+            "type": "String"
+        },
+        "configurations_min_examined_row_limit_name": {
+            "defaultValue": "min_examined_row_limit",
+            "type": "String"
+        },
+        "configurations_innodb_io_capacity_max_name": {
+            "defaultValue": "innodb_io_capacity_max",
+            "type": "String"
+        },
+        "configurations_max_sp_recursion_depth_name": {
+            "defaultValue": "max_sp_recursion_depth",
+            "type": "String"
+        },
+        "configurations_optimizer_search_depth_name": {
+            "defaultValue": "optimizer_search_depth",
+            "type": "String"
+        },
+        "configurations_div_precision_increment_name": {
+            "defaultValue": "div_precision_increment",
+            "type": "String"
+        },
+        "configurations_innodb_write_io_threads_name": {
+            "defaultValue": "innodb_write_io_threads",
+            "type": "String"
+        },
+        "configurations_max_prepared_stmt_count_name": {
+            "defaultValue": "max_prepared_stmt_count",
+            "type": "String"
+        },
+        "configurations_innodb_change_buffering_name": {
+            "defaultValue": "innodb_change_buffering",
+            "type": "String"
+        },
+        "configurations_innodb_purge_batch_size_name": {
+            "defaultValue": "innodb_purge_batch_size",
+            "type": "String"
+        },
+        "configurations_innodb_stats_persistent_name": {
+            "defaultValue": "innodb_stats_persistent",
+            "type": "String"
+        },
+        "configurations_innodb_lock_wait_timeout_name": {
+            "defaultValue": "innodb_lock_wait_timeout",
+            "type": "String"
+        },
+        "configurations_max_length_for_sort_data_name": {
+            "defaultValue": "max_length_for_sort_data",
+            "type": "String"
+        },
+        "configurations_innodb_adaptive_flushing_name": {
+            "defaultValue": "innodb_adaptive_flushing",
+            "type": "String"
+        },
+        "configurations_innodb_compression_level_name": {
+            "defaultValue": "innodb_compression_level",
+            "type": "String"
+        },
+        "configurations_innodb_random_read_ahead_name": {
+            "defaultValue": "innodb_random_read_ahead",
+            "type": "String"
+        },
+        "configurations_innodb_rollback_segments_name": {
+            "defaultValue": "innodb_rollback_segments",
+            "type": "String"
+        },
+        "configurations_innodb_stats_auto_recalc_name": {
+            "defaultValue": "innodb_stats_auto_recalc",
+            "type": "String"
+        },
+        "configurations_innodb_stats_on_metadata_name": {
+            "defaultValue": "innodb_stats_on_metadata",
+            "type": "String"
+        },
+        "configurations_eq_range_index_dive_limit_name": {
+            "defaultValue": "eq_range_index_dive_limit",
+            "type": "String"
+        },
+        "configurations_innodb_thread_concurrency_name": {
+            "defaultValue": "innodb_thread_concurrency",
+            "type": "String"
+        },
+        "configurations_innodb_thread_sleep_delay_name": {
+            "defaultValue": "innodb_thread_sleep_delay",
+            "type": "String"
+        },
+        "configurations_log_slow_admin_statements_name": {
+            "defaultValue": "log_slow_admin_statements",
+            "type": "String"
+        },
+        "configurations_log_slow_slave_statements_name": {
+            "defaultValue": "log_slow_slave_statements",
+            "type": "String"
+        },
+        "configurations_innodb_ft_enable_stopword_name": {
+            "defaultValue": "innodb_ft_enable_stopword",
+            "type": "String"
+        },
+        "configurations_innodb_adaptive_hash_index_name": {
+            "defaultValue": "innodb_adaptive_hash_index",
+            "type": "String"
+        },
+        "configurations_innodb_concurrency_tickets_name": {
+            "defaultValue": "innodb_concurrency_tickets",
+            "type": "String"
+        },
+        "configurations_innodb_max_dirty_pages_pct_name": {
+            "defaultValue": "innodb_max_dirty_pages_pct",
+            "type": "String"
+        },
+        "configurations_innodb_max_purge_lag_delay_name": {
+            "defaultValue": "innodb_max_purge_lag_delay",
+            "type": "String"
+        },
+        "configurations_updatable_views_with_limit_name": {
+            "defaultValue": "updatable_views_with_limit",
+            "type": "String"
+        },
+        "configurations_innodb_read_ahead_threshold_name": {
+            "defaultValue": "innodb_read_ahead_threshold",
+            "type": "String"
+        },
+        "configurations_innodb_autoextend_increment_name": {
+            "defaultValue": "innodb_autoextend_increment",
+            "type": "String"
+        },
+        "configurations_innodb_ft_num_word_optimize_name": {
+            "defaultValue": "innodb_ft_num_word_optimize",
+            "type": "String"
+        },
+        "configurations_innodb_log_compressed_pages_name": {
+            "defaultValue": "innodb_log_compressed_pages",
+            "type": "String"
+        },
+        "configurations_innodb_adaptive_flushing_lwm_name": {
+            "defaultValue": "innodb_adaptive_flushing_lwm",
+            "type": "String"
+        },
+        "configurations_innodb_cmp_per_index_enabled_name": {
+            "defaultValue": "innodb_cmp_per_index_enabled",
+            "type": "String"
+        },
+        "configurations_innodb_ft_result_cache_limit_name": {
+            "defaultValue": "innodb_ft_result_cache_limit",
+            "type": "String"
+        },
+        "configurations_log_queries_not_using_indexes_name": {
+            "defaultValue": "log_queries_not_using_indexes",
+            "type": "String"
+        },
+        "configurations_innodb_change_buffer_max_size_name": {
+            "defaultValue": "innodb_change_buffer_max_size",
+            "type": "String"
+        },
+        "configurations_innodb_optimize_fulltext_only_name": {
+            "defaultValue": "innodb_optimize_fulltext_only",
+            "type": "String"
+        },
+        "configurations_innodb_compression_pad_pct_max_name": {
+            "defaultValue": "innodb_compression_pad_pct_max",
+            "type": "String"
+        },
+        "configurations_innodb_max_dirty_pages_pct_lwm_name": {
+            "defaultValue": "innodb_max_dirty_pages_pct_lwm",
+            "type": "String"
+        },
+        "configurations_innodb_additional_mem_pool_size_name": {
+            "defaultValue": "innodb_additional_mem_pool_size",
+            "type": "String"
+        },
+        "configurations_log_bin_trust_function_creators_name": {
+            "defaultValue": "log_bin_trust_function_creators",
+            "type": "String"
+        },
+        "configurations_innodb_adaptive_max_sleep_delay_name": {
+            "defaultValue": "innodb_adaptive_max_sleep_delay",
+            "type": "String"
+        },
+        "firewallRules_ClientIPAddress_2018_10_5_11_1_9_name": {
+            "defaultValue": "ClientIPAddress_2018-10-5_11-1-9",
+            "type": "String"
+        },
+        "configurations_innodb_stats_include_delete_marked_name": {
+            "defaultValue": "innodb_stats_include_delete_marked",
+            "type": "String"
+        },
+        "configurations_innodb_stats_transient_sample_pages_name": {
+            "defaultValue": "innodb_stats_transient_sample_pages",
+            "type": "String"
+        },
+        "configurations_innodb_stats_persistent_sample_pages_name": {
+            "defaultValue": "innodb_stats_persistent_sample_pages",
+            "type": "String"
+        },
+        "configurations_log_throttle_queries_not_using_indexes_name": {
+            "defaultValue": "log_throttle_queries_not_using_indexes",
+            "type": "String"
+        },
+        "configurations_innodb_compression_failure_threshold_pct_name": {
+            "defaultValue": "innodb_compression_failure_threshold_pct",
+            "type": "String"
+        },
+        "virtualMachines_database_id": {
+            "defaultValue": "/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/DEVOPS/providers/Microsoft.Compute/disks/database_OsDisk_1_9c6c8cff11ba40c19ec6d321e94172b7",
+            "type": "String"
+        },
+        "virtualMachines_webserver_id": {
+            "defaultValue": "/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/DEVOPS/providers/Microsoft.Compute/disks/webserver_OsDisk_1_0cd7a8313a7d49aab6bd9e831143e6d6",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Compute/virtualMachines/database'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_database_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_B2s"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "credativ",
+                        "offer": "Debian",
+                        "sku": "8-backports",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('virtualMachines_database_name'),'_OsDisk_1_9c6c8cff11ba40c19ec6d321e94172b7')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_database_id')]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_database_name')]",
+                    "adminUsername": "deployer",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": true,
+                        "ssh": {
+                            "publicKeys": [
+                                {
+                                    "path": "/home/deployer/.ssh/authorized_keys",
+                                    "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6HXxQQLNFXTMeFBW1BXeUnox/RxIawGk0jfiLORo0ojwRpOEiik3I4CcDGm8RtOjQI+aJfDvhDaVGSNNhwrUjNJPO0lYHKXozrvlrXsxFwCrteMvrKfYOZn/QtiqEDSX/JaC8VD7C7/uLo0AJLKRR6eSWmtU+yD0MB6/+i2iOn9Bq2TaFCuUwkIy90mYhtj/LONuuLNAkPih8D20ZoCF/b9u8G43WDvgyiZGVGWlQM3xx0OOD90pDP4+xv5X4XRVQAXJmp7M+d8xas3MFvetNomN6YVtUSZIHmZX02aoNt1FjXx3TWBHIjeseItGy+NCE6WtZxGJhVBtsRcPbOoLFZwFuZ47SyUdzwtUBt2XY0y79ysDl99F2zXOM36vXAVI5HzRl1ErOhjkNd7YIrZjL/8E0sP3vxsMUQztBSx3/d/AoShLS1cFfrLhztCfhtYbxtEUWY87li5J3RVIDZCese1Zri/Ycfyh6nvipzTh7SDbQ8VSDAHx0/y3gjrqSXlm6HDzJWEkYDOG3GSE1pJsJrkgxGoitK0tXaetDjmmFB7PFx6sfGEZiGCslSaxXPa3qR1vCp1jXdpo/mmskqOZKcs+ILYmmKRsAKyuFyBOjNwRlcKJjwBznREe0+LyFu9yTb0CSg/9vF01KQixzl4afD9FLpDnm4oGg2bK4kw23Yw== hebertson@tickithealth.com"
+                                }
+                            ]
+                        },
+                        "provisionVMAgent": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_database282_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_devopsdiag673_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_database282_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_devopsdiag673_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Compute/virtualMachines/webserver'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_webserver_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_B2s"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "credativ",
+                        "offer": "Debian",
+                        "sku": "8-backports",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('virtualMachines_webserver_name'),'_OsDisk_1_0cd7a8313a7d49aab6bd9e831143e6d6')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_webserver_id')]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_webserver_name')]",
+                    "adminUsername": "deployer",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": true,
+                        "ssh": {
+                            "publicKeys": [
+                                {
+                                    "path": "/home/deployer/.ssh/authorized_keys",
+                                    "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6HXxQQLNFXTMeFBW1BXeUnox/RxIawGk0jfiLORo0ojwRpOEiik3I4CcDGm8RtOjQI+aJfDvhDaVGSNNhwrUjNJPO0lYHKXozrvlrXsxFwCrteMvrKfYOZn/QtiqEDSX/JaC8VD7C7/uLo0AJLKRR6eSWmtU+yD0MB6/+i2iOn9Bq2TaFCuUwkIy90mYhtj/LONuuLNAkPih8D20ZoCF/b9u8G43WDvgyiZGVGWlQM3xx0OOD90pDP4+xv5X4XRVQAXJmp7M+d8xas3MFvetNomN6YVtUSZIHmZX02aoNt1FjXx3TWBHIjeseItGy+NCE6WtZxGJhVBtsRcPbOoLFZwFuZ47SyUdzwtUBt2XY0y79ysDl99F2zXOM36vXAVI5HzRl1ErOhjkNd7YIrZjL/8E0sP3vxsMUQztBSx3/d/AoShLS1cFfrLhztCfhtYbxtEUWY87li5J3RVIDZCese1Zri/Ycfyh6nvipzTh7SDbQ8VSDAHx0/y3gjrqSXlm6HDzJWEkYDOG3GSE1pJsJrkgxGoitK0tXaetDjmmFB7PFx6sfGEZiGCslSaxXPa3qR1vCp1jXdpo/mmskqOZKcs+ILYmmKRsAKyuFyBOjNwRlcKJjwBznREe0+LyFu9yTb0CSg/9vF01KQixzl4afD9FLpDnm4oGg2bK4kw23Yw== hebertson@tickithealth.com"
+                                }
+                            ]
+                        },
+                        "provisionVMAgent": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_webserver366_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_devopsdiag673_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_webserver366_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_devopsdiag673_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas'.",
+            "type": "Microsoft.DBforMySQL/servers",
+            "sku": {
+                "name": "B_Gen5_2",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 2
+            },
+            "name": "[parameters('servers_devopsdb_sas_name')]",
+            "apiVersion": "2017-12-01-preview",
+            "location": "centralus",
+            "scale": null,
+            "properties": {
+                "storageProfile": {
+                    "storageMB": 5120,
+                    "backupRetentionDays": 7,
+                    "geoRedundantBackup": "Disabled"
+                },
+                "version": "5.6",
+                "sslEnforcement": "Disabled",
+                "createMode": "[parameters('servers_devopsdb_sas_createMode')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourcegroups/devops/providers/microsoft.devtestlab/schedules/shutdown-computevm-webserver'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_webserver_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1900"
+                },
+                "timeZoneId": "Pacific Standard Time",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 30
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_webserver_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "c344e785-d874-41e5-b690-4162b7739d2f"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_webserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourcegroups/devops/providers/microsoft.devtestlab/schedules/shutdown-computevm-database'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_database_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "centralus",
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1910"
+                },
+                "timeZoneId": "Pacific Standard Time",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 30,
+                    "webhookUrl": ""
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_database_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "2e908ff1-99ad-448e-b503-c45dd46937b2"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_database_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkInterfaces/database282'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_database282_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "5d9d6ab0-f612-4648-8279-1a2165de62b3",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"2d5c9c43-71c3-4868-87a4-51b8cf3ebdda\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.2.5",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_database_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_devops_vnet_name'), parameters('subnets_default_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_database_nsg_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_database_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_devops_vnet_name'), parameters('subnets_default_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_database_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkInterfaces/webserver366'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_webserver366_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "7f9d680e-e9fa-407c-9221-876298e988d9",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"4c9d0977-e364-4e84-8685-8420a2a45f80\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.2.4",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_webserver_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_devops_vnet_name'), parameters('subnets_default_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_webserver_nsg_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_webserver_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_devops_vnet_name'), parameters('subnets_default_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_webserver_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkSecurityGroups/database-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_database_nsg_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "6cc41462-7a38-40ca-8240-e4fc52cc39d0",
+                "securityRules": [
+                    {
+                        "name": "SSH",
+                        "etag": "W/\"b3af2dd1-6330-4c9a-8cf6-9632cb232e61\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ],
+                "defaultSecurityRules": [
+                    {
+                        "name": "AllowVnetInBound",
+                        "etag": "W/\"b3af2dd1-6330-4c9a-8cf6-9632cb232e61\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowAzureLoadBalancerInBound",
+                        "etag": "W/\"b3af2dd1-6330-4c9a-8cf6-9632cb232e61\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from azure load balancer",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllInBound",
+                        "etag": "W/\"b3af2dd1-6330-4c9a-8cf6-9632cb232e61\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all inbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowVnetOutBound",
+                        "etag": "W/\"b3af2dd1-6330-4c9a-8cf6-9632cb232e61\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowInternetOutBound",
+                        "etag": "W/\"b3af2dd1-6330-4c9a-8cf6-9632cb232e61\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to Internet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllOutBound",
+                        "etag": "W/\"b3af2dd1-6330-4c9a-8cf6-9632cb232e61\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all outbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkSecurityGroups/webserver-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_webserver_nsg_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "a6aa3825-2509-4710-9a88-a4d835232f66",
+                "securityRules": [
+                    {
+                        "name": "SSH",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "HTTPS",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 320,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "HTTP",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 340,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ],
+                "defaultSecurityRules": [
+                    {
+                        "name": "AllowVnetInBound",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowAzureLoadBalancerInBound",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from azure load balancer",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllInBound",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all inbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowVnetOutBound",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowInternetOutBound",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to Internet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllOutBound",
+                        "etag": "W/\"ee819ea1-0900-4a0a-8d37-5f5a939e3a41\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all outbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/publicIPAddresses/database-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_database_ip_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "341072a7-7130-4504-930a-86cd734e958a",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "devopsdb",
+                    "fqdn": "devopsdb.centralus.cloudapp.azure.com"
+                },
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/publicIPAddresses/webserver-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_webserver_ip_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "9b37ccb7-0b19-47c5-b7d0-a512b3b2db9d",
+                "ipAddress": "40.122.36.90",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "devopsweb",
+                    "fqdn": "devopsweb.centralus.cloudapp.azure.com"
+                },
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/virtualNetworks/devops-vnet'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_devops_vnet_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "929968ac-b2d2-4034-8f73-32a10cf1bcaa",
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.2.0/24"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "default",
+                        "etag": "W/\"9deb97eb-def1-40b1-8222-f910a7004e6e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.0.2.0/24",
+                            "serviceEndpoints": [
+                                {
+                                    "provisioningState": "Succeeded",
+                                    "service": "Microsoft.Sql",
+                                    "locations": [
+                                        "centralus"
+                                    ]
+                                }
+                            ],
+                            "delegations": []
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Storage/storageAccounts/devopsdiag673'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_devopsdiag673_name')]",
+            "apiVersion": "2018-07-01",
+            "location": "centralus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": false,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true
+                        },
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Compute/virtualMachines/webserver/extensions/enablevmaccess'.",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('virtualMachines_webserver_name'), '/', parameters('extensions_enablevmaccess_name'))]",
+            "apiVersion": "2018-06-01",
+            "location": "centralus",
+            "scale": null,
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "settings": {},
+                "publisher": "Microsoft.OSTCExtensions",
+                "type": "VMAccessForLinux",
+                "typeHandlerVersion": "1.4",
+                "protectedSettings": {
+                    "username": "[parameters('extensions_enablevmaccess_username')]",
+                    "password": "[parameters('extensions_enablevmaccess_password')]",
+                    "ssh_key": "[parameters('extensions_enablevmaccess_ssh_key')]",
+                    "reset_ssh": "[parameters('extensions_enablevmaccess_reset_ssh')]",
+                    "remove_user": "[parameters('extensions_enablevmaccess_remove_user')]",
+                    "expiration": "[parameters('extensions_enablevmaccess_expiration')]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_webserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/character_set_server'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_character_set_server_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "latin1",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/div_precision_increment'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_div_precision_increment_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "4",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/eq_range_index_dive_limit'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_eq_range_index_dive_limit_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "10",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/event_scheduler'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_event_scheduler_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/group_concat_max_len'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_group_concat_max_len_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1024",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/init_connect'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_init_connect_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_adaptive_hash_index'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_adaptive_hash_index_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_additional_mem_pool_size'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_additional_mem_pool_size_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "8388608",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_concurrency_tickets'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_concurrency_tickets_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "5000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_file_format'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_file_format_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "Antelope",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_io_capacity'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_io_capacity_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "200",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_lock_wait_timeout'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_lock_wait_timeout_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "50",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_old_blocks_pct'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_old_blocks_pct_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "37",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_old_blocks_time'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_old_blocks_time_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_read_ahead_threshold'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_read_ahead_threshold_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "56",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_read_io_threads'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_read_io_threads_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "4",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_thread_concurrency'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_thread_concurrency_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_thread_sleep_delay'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_thread_sleep_delay_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "10000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_write_io_threads'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_write_io_threads_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "4",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/interactive_timeout'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_interactive_timeout_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "28800",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/lock_wait_timeout'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_lock_wait_timeout_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "31536000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/log_bin_trust_function_creators'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_log_bin_trust_function_creators_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/log_queries_not_using_indexes'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_log_queries_not_using_indexes_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/log_slow_admin_statements'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_log_slow_admin_statements_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/log_slow_slave_statements'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_log_slow_slave_statements_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/log_throttle_queries_not_using_indexes'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_log_throttle_queries_not_using_indexes_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/long_query_time'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_long_query_time_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "10",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/lower_case_table_names'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_lower_case_table_names_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_allowed_packet'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_allowed_packet_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "536870912",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_connect_errors'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_connect_errors_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "100",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_length_for_sort_data'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_length_for_sort_data_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1024",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_prepared_stmt_count'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_prepared_stmt_count_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "16382",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/min_examined_row_limit'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_min_examined_row_limit_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/net_read_timeout'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_net_read_timeout_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "120",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/net_write_timeout'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_net_write_timeout_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "240",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/server_id'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_server_id_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1277502419",
+                "source": "user-override"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/slave_net_timeout'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_slave_net_timeout_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "60",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/slow_query_log'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_slow_query_log_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/sql_mode'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_sql_mode_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/table_open_cache'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_table_open_cache_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "2000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/time_zone'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_time_zone_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "SYSTEM",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/tx_isolation'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_tx_isolation_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "REPEATABLE-READ",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/wait_timeout'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_wait_timeout_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "120",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/default_week_format'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_default_week_format_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/flush_time'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_flush_time_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_adaptive_flushing'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_adaptive_flushing_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_adaptive_flushing_lwm'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_adaptive_flushing_lwm_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "10",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_adaptive_max_sleep_delay'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_adaptive_max_sleep_delay_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "150000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_autoextend_increment'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_autoextend_increment_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "64",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_change_buffer_max_size'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_change_buffer_max_size_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "25",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_change_buffering'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_change_buffering_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "all",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_cmp_per_index_enabled'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_cmp_per_index_enabled_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_compression_failure_threshold_pct'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_compression_failure_threshold_pct_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "5",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_compression_level'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_compression_level_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "6",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_compression_pad_pct_max'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_compression_pad_pct_max_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "50",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_ft_enable_stopword'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_ft_enable_stopword_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_ft_num_word_optimize'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_ft_num_word_optimize_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "2000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_ft_result_cache_limit'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_ft_result_cache_limit_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "2000000000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_io_capacity_max'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_io_capacity_max_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "2000",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_large_prefix'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_large_prefix_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_log_compressed_pages'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_log_compressed_pages_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_lru_scan_depth'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_lru_scan_depth_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1024",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_max_dirty_pages_pct'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_max_dirty_pages_pct_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "75",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_max_dirty_pages_pct_lwm'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_max_dirty_pages_pct_lwm_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_max_purge_lag'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_max_purge_lag_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_max_purge_lag_delay'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_max_purge_lag_delay_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_optimize_fulltext_only'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_optimize_fulltext_only_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_purge_batch_size'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_purge_batch_size_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "300",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_random_read_ahead'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_random_read_ahead_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_rollback_segments'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_rollback_segments_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "128",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_stats_auto_recalc'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_stats_auto_recalc_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_stats_include_delete_marked'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_stats_include_delete_marked_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_stats_method'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_stats_method_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "nulls_equal",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_stats_on_metadata'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_stats_on_metadata_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "OFF",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_stats_persistent'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_stats_persistent_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_stats_persistent_sample_pages'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_stats_persistent_sample_pages_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "20",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_stats_transient_sample_pages'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_stats_transient_sample_pages_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "8",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/innodb_table_locks'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_innodb_table_locks_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "ON",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_error_count'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_error_count_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "64",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_join_size'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_join_size_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "18446744073709551615",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_seeks_for_key'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_seeks_for_key_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "4294967295",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_sort_length'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_sort_length_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1024",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_sp_recursion_depth'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_sp_recursion_depth_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_user_connections'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_user_connections_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "0",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/max_write_lock_count'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_max_write_lock_count_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "4294967295",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/net_retry_count'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_net_retry_count_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "10",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/optimizer_prune_level'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_optimizer_prune_level_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "1",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/optimizer_search_depth'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_optimizer_search_depth_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "62",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/stored_program_cache'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_stored_program_cache_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "256",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/configurations/updatable_views_with_limit'.",
+            "type": "Microsoft.DBforMySQL/servers/configurations",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('configurations_updatable_views_with_limit_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "value": "YES",
+                "source": "system-default"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/databases/information_schema'.",
+            "type": "Microsoft.DBforMySQL/servers/databases",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('databases_information_schema_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "charset": "utf8",
+                "collation": "utf8_general_ci"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/databases/mysql'.",
+            "type": "Microsoft.DBforMySQL/servers/databases",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('databases_mysql_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "charset": "latin1",
+                "collation": "latin1_swedish_ci"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/databases/performance_schema'.",
+            "type": "Microsoft.DBforMySQL/servers/databases",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('databases_performance_schema_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "charset": "utf8",
+                "collation": "utf8_general_ci"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/databases/tickit_staging'.",
+            "type": "Microsoft.DBforMySQL/servers/databases",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('databases_tickit_staging_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "charset": "utf8mb4",
+                "collation": "utf8mb4_unicode_ci"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/firewallRules/ClientIPAddress_2018-10-5_11-1-9'.",
+            "type": "Microsoft.DBforMySQL/servers/firewallRules",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('firewallRules_ClientIPAddress_2018_10_5_11_1_9_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "startIpAddress": "50.64.69.39",
+                "endIpAddress": "50.64.69.39"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/firewallRules/devops'.",
+            "type": "Microsoft.DBforMySQL/servers/firewallRules",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('firewallRules_devops_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "startIpAddress": "40.122.36.90",
+                "endIpAddress": "40.122.36.90"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.DBforMySQL/servers/devopsdb-sas/firewallRules/myvm'.",
+            "type": "Microsoft.DBforMySQL/servers/firewallRules",
+            "name": "[concat(parameters('servers_devopsdb_sas_name'), '/', parameters('firewallRules_myvm_name'))]",
+            "apiVersion": "2017-12-01-preview",
+            "scale": null,
+            "properties": {
+                "startIpAddress": "23.101.180.95",
+                "endIpAddress": "23.101.180.95"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', parameters('servers_devopsdb_sas_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkSecurityGroups/database-nsg/securityRules/SSH'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_database_nsg_name'), '/', parameters('securityRules_SSH_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "22",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 300,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_database_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkSecurityGroups/webserver-nsg/securityRules/SSH'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_webserver_nsg_name'), '/', parameters('securityRules_SSH_name_1'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "22",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 300,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_webserver_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkSecurityGroups/webserver-nsg/securityRules/HTTPS'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_webserver_nsg_name'), '/', parameters('securityRules_HTTPS_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "443",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 320,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_webserver_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/networkSecurityGroups/webserver-nsg/securityRules/HTTP'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_webserver_nsg_name'), '/', parameters('securityRules_HTTP_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "80",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 340,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_webserver_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/b17dd1d9-14f1-4eab-959b-f20d30b9e630/resourceGroups/devops/providers/Microsoft.Network/virtualNetworks/devops-vnet/subnets/default'.",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "name": "[concat(parameters('virtualNetworks_devops_vnet_name'), '/', parameters('subnets_default_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.2.0/24",
+                "serviceEndpoints": [
+                    {
+                        "provisioningState": "Succeeded",
+                        "service": "Microsoft.Sql",
+                        "locations": [
+                            "centralus"
+                        ]
+                    }
+                ],
+                "delegations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_devops_vnet_name'))]"
+            ]
+        }
+    ]
+}
