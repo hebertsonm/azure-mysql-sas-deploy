@@ -1,4 +1,4 @@
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/hebertsonm/azure-mysql-sas-deploy/master/azure-mysql-sas-template.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/http://raw.githubusercontent.com/hebertsonm/azure-mysql-sas-deploy/master/azure-mysql-sas-template.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
